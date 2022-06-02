@@ -6,11 +6,7 @@ import NewsApiService from './js/apiServise';
 import './css/styles.css';
 // const axios = require('axios');
 
-let gallery = new SimpleLightbox('.gallery a');
-gallery.refresh(); 
-
-// new SimpleLightbox('.gallery a', { captionsData: "alt", captionDelay: 250 });
-
+ let lightbox = new SimpleLightbox('.gallery a');
 const newsApiService = new NewsApiService();
 
 const refs = {
@@ -21,6 +17,7 @@ const refs = {
 
 refs.form.addEventListener("submit", onSearch);
 refs.loadMoreBtn.addEventListener("click", onLoadMore);
+refs.galleryContainer.addEventListener("click", onImageBoxClick);
 
 
 hideButton();
@@ -46,6 +43,7 @@ function onSearch(evn) {
     Notiflix.Notify.info(`Hooray! We found ${data.totalHits} images.`);
     appendCardMarkup(data.hits);
     showButton();
+    lightbox.refresh(); 
   });
 }
 
@@ -57,11 +55,12 @@ function onLoadMore() {
     try {
      Notiflix.Notify.info(`Hooray! We found ${data.totalHits} images.`);
       appendCardMarkup(data.hits);
+      lightbox.refresh();
      console.log("data: ",data);
       } catch (error) {
        console.log("error: ", error)
-     hideButton();
-          
+      hideButton();
+             
    }
  
 
@@ -87,7 +86,14 @@ function showButton() {
 }
 
 
+function onImageBoxClick(event) {
+  event.preventDefault();
 
+};
+
+
+
+// new SimpleLightbox('.gallery a', { captionsData: "alt", captionDelay: 250 });
 
 
 
