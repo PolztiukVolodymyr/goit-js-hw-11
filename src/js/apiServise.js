@@ -10,9 +10,7 @@ export default class NewsApiService{
         this.name = "";
         this.page = 1;
     }
-
        
-
     async searchRequest() {
       try {
           console.log(this);
@@ -22,7 +20,7 @@ export default class NewsApiService{
 
           return selectedData;
       } catch (error) {
-    //    console.log("error: ", error)
+    
          Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
           
    }
