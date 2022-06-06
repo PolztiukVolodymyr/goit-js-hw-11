@@ -54,6 +54,12 @@ img {
   height: 35px;
   border-radius: 4px;
   border-color: gray;
+  transition: transform .25s cubic-bezier(.4, 0, .2, 1);
+}
+
+.search-form button:hover{
+  transform: scale(1.03);
+  transition: transform .25s cubic-bezier(.4, 0, .2, 1);
 }
 
 .is-hidden {
@@ -77,6 +83,7 @@ img {
 .load-more:hover {
   transform: scale(1.03);
   transition: transform .25s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0 0 5px 2px #8e8aa8;
   color: #ebe705;
 }
 
@@ -121,16 +128,15 @@ img {
   display: flex;
   color: black;
   margin: 0;
+  font-size: 14px;
 }
 
 .info-item__name{
-   font-size: 14px;
-   font-weight: 700;
+    font-weight: 700;
 }
 
 .info-item__value{
   color: grey;
-  font-size: 14px;
   font-weight: 500;
 }
 

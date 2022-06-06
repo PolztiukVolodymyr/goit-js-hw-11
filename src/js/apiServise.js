@@ -13,7 +13,6 @@ export default class NewsApiService{
        
     async searchRequest() {
       try {
-          console.log(this);
           const response = await axios.get(`${BASE_URL}?key=${KEY}&q=${this.name}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`)
           const selectedData = response.data;
           this.incrementPage();

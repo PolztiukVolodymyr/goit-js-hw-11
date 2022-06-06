@@ -3,26 +3,31 @@ import cardTemplates from "./templates/card.hbs";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import NewsApiService from './js/apiServise';
+import OnlyScroll from 'only-scrollbar';
 import './css/styles.css';
 // const axios = require('axios');
 
 let lightbox = new SimpleLightbox('.gallery a');
 const newsApiService = new NewsApiService();
 
-// , { captionsData: "alt", captionDelay: 250 }
+const scroll = new OnlyScroll(document.scrollingElement, {
+    damping: 0.8,
+    eventContainer: window
+});
+
 
 const refs = {
   form: document.querySelector(".search-form"),
   loadMoreBtn: document.querySelector(".load-more"),
   galleryContainer: document.querySelector(".gallery"),
- }
+}
+
 
 refs.form.addEventListener("submit", onSearch);
 refs.loadMoreBtn.addEventListener("click", onLoadMore);
 refs.galleryContainer.addEventListener("click", onImageClick);
 
-
-hideButton();
+ hideButton();
 
 function onSearch(evn) {
   evn.preventDefault();
@@ -84,12 +89,10 @@ function showButton() {
   refs.loadMoreBtn.classList.remove("is-hidden")
 }
 
-
 function onImageClick(event) {
   event.preventDefault();
 
 };
-
 
 
 
